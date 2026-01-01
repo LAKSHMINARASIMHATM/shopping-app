@@ -28,9 +28,7 @@ services:
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/build
     envVars:
-      # Automatically injects the Backend URL into the Frontend build
+      # Backend URL - Set this in Render dashboard after backend is deployed
+      # Format: https://shop-backend.onrender.com/api
       - key: REACT_APP_BACKEND_URL
-        fromService:
-          type: web
-          name: shop-backend
-          property: url
+        sync: false
