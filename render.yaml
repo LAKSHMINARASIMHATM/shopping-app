@@ -1,0 +1,36 @@
+services:
+  # ------------------------------------
+  # 1. Backend Service (FastAPI)
+  # ------------------------------------
+  - type: web
+    name: shop-backend
+    env: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && uvicorn server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.12
+      - key: CORS_ORIGINS
+        value: "*" # To be updated with frontend URL for stricter security
+      - key: MONGO_URL
+        sync: false # Must be set in Render dashboard manually (Cloud MongoDB)
+      - key: GEMINI_API_KEY
+        sync: false # Must be set in Render dashboard manually
+      - key: JWT_SECRET
+        generateValue: true
+
+  # ------------------------------------
+  # 2. Frontend Service (React)
+  # ------------------------------------
+  - type: web
+    name: shop-frontend
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/build
+    envVars:
+      # Automatically injects the Backend URL into the Frontend build
+      - key: REACT_APP_BACKEND_URL
+        fromService:
+          type: web
+          name: shop-backend
+          property: url
