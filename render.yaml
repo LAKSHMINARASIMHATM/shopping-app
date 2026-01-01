@@ -5,17 +5,21 @@ services:
   - type: web
     name: shop-backend
     env: python
+    region: oregon
+    plan: free
     buildCommand: pip install -r backend/requirements.txt
     startCommand: cd backend && uvicorn server:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
         value: 3.10.12
       - key: CORS_ORIGINS
-        value: "*" # To be updated with frontend URL for stricter security
+        value: "*"
       - key: MONGO_URL
-        sync: false # Must be set in Render dashboard manually (Cloud MongoDB)
+        sync: false
+      - key: DB_NAME
+        value: shop_assistant
       - key: GEMINI_API_KEY
-        sync: false # Must be set in Render dashboard manually
+        sync: false
       - key: JWT_SECRET
         generateValue: true
 
@@ -25,10 +29,10 @@ services:
   - type: web
     name: shop-frontend
     env: static
-    buildCommand: cd frontend && npm install && npm run build
+    region: oregon
+    plan: free
+    buildCommand: cd frontend && npm install && REACT_APP_BACKEND_URL=$REACT_APP_BACKEND_URL npm run build
     staticPublishPath: frontend/build
     envVars:
-      # Backend URL - Set this in Render dashboard after backend is deployed
-      # Format: https://shop-backend.onrender.com/api
       - key: REACT_APP_BACKEND_URL
         sync: false
