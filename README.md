@@ -2,16 +2,16 @@
 
 An AI-powered shopping assistant that helps you save money by analyzing bills, comparing prices, and generating smart shopping lists.
 
-## 🚀 Features
+##  Features
 
-- **📸 Bill Scanning**: Upload bills and extract items using OCR
-- **🤖 AI Analysis**: Powered by Google Gemini for intelligent item categorization
-- **💰 Price Comparison**: Compare prices across 9+ e-commerce platforms
-- **📊 Spending Insights**: Track your spending patterns and get insights
-- **📝 Smart Shopping Lists**: Generate optimized shopping lists within budget
-- **🔐 Secure Authentication**: Email/password and OAuth (Google, GitHub) login
+- ** Bill Scanning**: Upload bills and extract items using OCR
+- ** AI Analysis**: Powered by Google Gemini for intelligent item categorization
+- ** Price Comparison**: Compare prices across 9+ e-commerce platforms
+- ** Spending Insights**: Track your spending patterns and get insights
+- ** Smart Shopping Lists**: Generate optimized shopping lists within budget
+- ** Secure Authentication**: Email/password and OAuth (Google, GitHub) login
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Backend
 - **FastAPI** - Modern Python web framework
@@ -25,7 +25,7 @@ An AI-powered shopping assistant that helps you save money by analyzing bills, c
 - **React Router** - Navigation
 - **Axios** - HTTP client
 
-## 📦 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Python 3.8+
@@ -40,13 +40,6 @@ An AI-powered shopping assistant that helps you save money by analyzing bills, c
    cd backend
    ```
 
-2. **Create `.env` file** with your credentials:
-   ```env
-   MONGO_URL=mongodb+srv://simha:narasimha@cluster0.nmaqxhm.mongodb.net/?appName=Cluster0
-   DB_NAME=shop_assistant
-   JWT_SECRET=your-secret-key-here
-   GEMINI_API_KEY=your-gemini-api-key
-   ```
 
 3. **Install dependencies**:
    ```bash
