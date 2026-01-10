@@ -85,7 +85,6 @@ An AI-powered shopping assistant that helps you save money by analyzing bills, c
 ## 📚 Documentation
 
 - **[Quick Start Guide](QUICKSTART.md)** - Get started quickly
-- **[MongoDB Setup](MONGODB_SETUP.md)** - Detailed MongoDB configuration
 - **[Git Setup](GIT_SETUP.md)** - Git authentication and push instructions
 - **[Deployment Guide](DEPLOYMENT_GUIDE.md)** - Deploy to production
 
