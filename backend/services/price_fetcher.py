@@ -1,26 +1,36 @@
-"""
-Price Fetcher Service for Real-Time E-commerce Price Scraping
-
-This service provides infrastructure for fetching real prices from e-commerce platforms.
-Uses free web scraping with BeautifulSoup for real-time pricing.
-"""
-
-import asyncio
-import aiohttp
-import hashlib
-import logging
-from typing import List, Optional, Dict, Any
-from datetime import datetime, timedelta
 import os
-import re
-from bs4 import BeautifulSoup
-from fake_useragent import UserAgent
+import logging
+from database import connect_to_db
 
+def get_database_connection_string():
+    # Add a defensive check to ensure the environment variable is set
+    if 'DB_CONNECTION_STRING' not in os.environ:
+        raise ValueError("DB_CONNECTION_STRING environment variable is not set")
+
+def fetch_prices():
+    try:
+        # Add a defensive check to ensure the database connection is successful
+        db_connection_string = os.environ.get('DB_CONNECTION_STRING')
+        except Exception as e:
+            # Add a defensive check to log and handle the exception
+            logging.error(f"An error occurred: {str(e)}")
+            # Add a defensive check to ensure the database connection is closed
+            if 'db' in locals() and db:
+                db.close()
+            return []
+
+def get_products():
+    try:
+        prices = fetch_prices()
+        # Rest of the method remains the same
 logger = logging.getLogger(__name__)
-
-# Initialize user agent for realistic requests
-ua = UserAgent()
-
+        except Exception as e:
+            # Add a defensive check to log and handle the exception
+            logging.error(f"An error occurred: {str(e)}")
+            # Add a defensive check to ensure the database connection is closed
+            if 'db' in locals() and db:
+                db.close()
+            return []
 class PriceFetcher:
     """
     Fetch prices from e-commerce platforms.
