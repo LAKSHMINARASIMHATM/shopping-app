@@ -1,13 +1,21 @@
-// Import the registerUser function from the correct module
-const { registerUser } = require('./user_registration');
+// existing code...
 
-// Rest of the file remains the same
-// rest of the code remains the same, assuming the function is used correctly afterwards
-// Add a null check to ensure registerUser is a function before calling it
-if (typeof registerUser === 'function') {
-  // Call the registerUser function
-  registerUser();
-} else {
+// Add input validation to ensure 'user' object has required properties
+function validateUser(user) {
+  if (!user || !user.username || !user.password) {
+    throw new Error("User object is missing required properties");
+  }
+}
+
+function registerUser(user) {
+  // Call validation function to check for required properties
+  validateUser(user);
+
+  // existing code...
+  const username = user.username; // now safely accessed after validation
+}
+
+// existing code...
   // Handle the case where registerUser is not a function
   throw new Error('registerUser is not a function');
 }
